@@ -1,0 +1,168 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+   button{ padding: 0;
+            border: none;
+            background: none;
+           }
+    p.update{
+        font-style: italic;
+        font-size: 18px;
+        margin-top: -20px;
+        width: 30%;
+    }
+
+    div {
+     background-color:  #CFB1ED ;
+
+   }
+
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #D3D3D3;
+    color: black;
+    text-align: center;
+}
+p#welcome{
+  color: black;
+  margin-top: 12px;
+  font-size:20px;
+}
+</style>
+<nav class="navbar navbar-default">
+ <div class="container-fluid">
+ <div class="navbar-header">
+
+ <a class="navbar-brand" href="/">GPUApplication Details</a>
+ </div >
+ <ul class="nav navbar-nav navbar-right">
+
+ <!--<li ><p id="welcome">Welcome {{user}} !!!!!</p></li>-->
+
+ </ul>
+ </div>
+</nav>
+
+<div class="container" align="center">
+  <div class="table-responsive" align="center">
+    <form method="post" action="/select">
+  <table class="table">
+      <thead>
+
+         <tr>
+            <th>Device Details</th>
+            <th>Value</th>
+         </tr>
+      </thead>
+      <tbody>
+        <tr>
+           <td>Device Name</td>
+           <td>{{gpu_data.name}}</td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            <td>{{gpu_data.manufacturer}}</td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td>{{gpu_data.dateIssue}}</td>
+        </tr>
+        <tr>
+            <td>geometry_shader</td>
+            <td>
+                    <button name="geometry_shader" type="submit" value="{{gpu_data.geometry_shader}}">
+                        <u>{{gpu_data.geometry_shader}}</u>
+                    </button>
+
+            </td>
+            <td>
+
+
+
+
+
+                                          </td>
+        </tr>
+        <tr>
+            <td>tesselation_shader</td>
+            <td>
+                    <button name="tesselation_shader" type="submit" value="{{gpu_data.tesselation_shader }}">
+                        <u>{{gpu_data.tesselation_shader}}</u>
+                    </button>
+
+            </td>
+            <td>
+
+
+
+                                          </td>
+        </tr>
+        <tr>
+            <td>shader_int16</td>
+            <td>
+                    <button name="shader_int16" type="submit" value="{{gpu_data.shader_int16}}">
+                    <u>{{gpu_data.shader_int16}}</u>
+                </button>
+
+            </td>
+            <td>
+
+
+
+
+
+                                            </td>
+        </tr>
+        <tr>
+            <td>sparse_binding</td>
+            <td>
+                    <button name="sparse_binding" type="submit" value="{{gpu_data.sparse_binding}}">
+                        <u>{{gpu_data.sparse_binding}}</u>
+                    </button>
+
+            </td>
+            <td>
+
+
+
+
+
+                                            </td>
+        </tr>
+        <tr>
+            <td>texture_compressionetc2</td>
+            <td>
+                <button name="texture_compressionetc2" type="submit" value="{{gpu_data.texture_compressionetc2}}">
+                    <u>{{gpu_data.texture_compressionetc2}}</u>
+                </button>
+
+            </td>
+            <td>
+
+
+
+
+
+                                            </td>
+        </tr>
+        <tr>
+            <td>vertex_pipeline_stores_and_atomics</td>
+            <td>
+                    <button name="vertex_pipeline_stores_and_atomics" type="submit" value="{{gpu_data.vertex_pipeline_stores_and_atomics}}">
+                        <u>{{gpu_data.vertex_pipeline_stores_and_atomics}}</u>
+                    </button>
+
+            </td>
+            <td>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <a  href="/editfeatures/{{gpu_data.name}}"><p class="update"> Click to Update GPU Details </p></a> <br>
+
+    </form>
+  </div>
+</div>

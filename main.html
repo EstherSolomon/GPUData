@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="theme-color" content="#3e454c">
+
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/js/bootstrap.min.js">
+        <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap-select.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/jquery.dataTables.min.js"></script>
+        <script src="/static/js/dataTables.bootstrap.min.js"></script>
+        <script src="/static/js/Chart.min.js"></script>
+        <script src="/static/js/fileinput.js"></script>
+        <script src="/static/js/chartData.js"></script>
+        <script src="/static/js/main.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+ div {
+  background-color:  #CFB1ED ;
+
+}
+
+.center-view{
+
+    height: 200px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
+</style>
+    <body>
+        <div >
+            {% if user %}
+
+                <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                            <div>
+                          <h3 align="center" class="page-title">GPU Application Database</h3>
+                          <h6 align="right"><i class="fa fa-user-circle-o" style="font-size:24px">{{user}}</i></h6>
+                            </div>
+                            <!-- Zero Configuration Table -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+
+                                  {% if gpu_data %}
+                                    <form action="/compare" method="post">
+
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Device
+                                                </th>
+                                                <th>
+                                                    Manufacturer
+                                                </th>
+                                                <th>
+                                                    Date Issued
+                                                </th>
+                                                       <th>
+
+
+                                                     <div><input type="submit" value="Compare"></div>
+                                                </th>
+                                                <th>
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                 <th>
+                                                    Device
+                                                </th>
+                                                <th>
+                                                    Manufacturer
+                                                </th>
+
+                                                <th>
+                                                    Date Issued
+                                                </th>
+
+                                                  <th>
+                                                  <div><input type="submit" value="Compare"></div>
+                                                </th>
+                                                 <th>
+                                                    Action
+                                                </th>
+                                            </tr>
+                                        </tfoot>
+                        <tbody>
+
+                        {% for gpu_all_data in gpu_data %}
+                        <tr>
+
+                          <td>
+                              <a href="/features/{{gpu_all_data.name}}">{{gpu_all_data.name}}</a>
+                          </td>
+                          <td>
+                             {{gpu_all_data.manufacturer}}
+                          </td>
+                          <td>
+                             {{gpu_all_data.dateIssue}}
+                          </td>
+
+
+                            <td>
+
+
+                                                <div class='checkbox checkbox-warning'>
+                                                        <input id='checkbox3' type='checkbox' name='compare' value={{gpu_all_data.name}}>
+                                                        <label for='checkbox3'>
+                                                        </label>
+                                                    </div>
+
+
+                                            </td>
+                            <td>
+                                <button type='button'  onclick="window.location.href='/delete/{{gpu_all_data.name}}'" class='btn btn-danger btn-circle' id='delect'  data-toggle='tooltip'  title='Delete' >
+                                           <i class='fa fa-trash-o'>
+                                           </i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                      {% endif %}
+                    </tbody>
+                                    </table>
+                                      </form>
+                                    <br/>
+                                    <div class="container">
+                                        <h3><a href="/edit"><p id="EditButton" align="center"><button type="button"><i class="fa fa-plus" style="font-size:24px">Add new GPU</i></button></p></a></h3>
+                                    </div>
+
+
+                                  <div align="center"><p class="one" align="center"> <a href='{{ url }}'>Logout</a></p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class = "center-view">
+          <h1 align="center"> Welcome To GPU Database </h1>
+
+               <div align="center"><p class="one" align="center"><a href='{{ url }}'>Login to Application </a></p></div>
+
+
+            {% endif %}
+        </div>
+    </body>
+</html>

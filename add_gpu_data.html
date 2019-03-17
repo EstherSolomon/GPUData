@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>GPU DB Application</title>
+    <style>
+
+</style>
+</head>
+
+
+<body>
+  <style>
+  p#welcome{
+    color: black;
+    margin-top: 12px;
+    font-size:20px;users_name
+  }
+  .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #D3D3D3;
+  color: black;
+  text-align: center;
+}
+
+div {
+background-color:  #CFB1ED ;
+
+}
+
+  </style>
+      <nav class="navbar navbar-default">
+     <div class="container-fluid">
+     <div class="navbar-header">
+     <a  class="navbar-brand" href="/">Creating a new GPU</a>
+     </div>
+     <ul class="nav navbar-nav navbar-right">
+   </ul>
+     </div>
+    </nav>
+    {% if error %}
+      <div align="center">
+        {{error}}
+      </div>
+    {% endif %}
+    <div align="center">
+     GPU Details<br/><br/>
+   </div>
+
+
+    <form method="post" action="/edit">
+      <div class="row" align="center">
+          <table>
+
+            <tr>
+
+            <label for="Device Name">Device Name: </label>
+              <input type="text" name="device_name" required=True placeholder="Device Name"><br><br>
+            </tr>
+            <tr>
+              <label for="Device Name">Manufacturer: </label>
+              <input type="text" name="manufacturer" required=True placeholder="Manufacturer"><br><br>
+            </tr>
+            <tr>
+                  <label for="Driver">Date issued: </label>
+
+                   <input type="date" name="dateIssue" required=True placeholder="Date"><br><br>
+
+                 </tr>
+
+                      <tr>
+              <td><b>Click the checkbox to select <br></b></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <td><input type="checkbox" name="GeometryShader">GeometryShader <br></td>
+              <td><input type="checkbox" name="TesselationShaderr">TesselationShaderr <br></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" name="ShaderInt16">ShaderInt16 <br></td>
+              <td><input type="checkbox" name="SparseBinding">SparseBinding <br></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" name="TextureCompressionETC2">TextureCompressionETC2 <br></td>
+              <td><input type="checkbox" name="vertexPipelineStoresAndAtomics">vertexPipelineStoresAndAtomics<br></td>
+            </tr>
+            </table>
+
+<input type="submit" value="Add" name="button" id="btn_click" />
+    </form>
+    <form method="post" action="/edit">
+
+        <input type="submit" value="Cancel" name="button" id="btn_click"/>
+    </form>
+
+  </div>
+</body>
+
+</html>

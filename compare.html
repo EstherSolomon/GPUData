@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="theme-color" content="#3e454c">
+
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/js/bootstrap.min.js">
+
+        <script src="/static/js/jquery.min.js"></script>
+        <script src="/static/js/bootstrap-select.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/jquery.dataTables.min.js"></script>
+        <script src="/static/js/dataTables.bootstrap.min.js"></script>
+        <script src="/static/js/Chart.min.js"></script>
+        <script src="/static/js/fileinput.js"></script>
+        <script src="/static/js/chartData.js"></script>
+        <script src="/static/js/main.js"></script>
+
+    </head>
+    <style>
+    div {
+     background-color:  #CFB1ED ;
+
+    }
+    </style>
+    <body>
+        <div >
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div>
+                            <h2 class="page-title">Tables</h2>
+                            <!-- Zero Configuration Table -->
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  {% if gpu_data %}
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                          <tr>
+                                                                       <th>
+                                Device
+                            </th>
+                            <th>
+                                geometry_shader
+                            </th>
+                            <th>
+                                tesselation_shader
+                            </th>
+                                                <th>
+                                                    shader_int16
+                                                </th>
+                                                <th>
+                                                    sparse_binding
+                                                </th>
+                                                <th>
+                                                    texture_compressionetc2
+                                                </th>
+                                                <th>
+                                                    vertex_pipeline_stores_and_atomics
+                                                </th>
+
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                                       <th>
+                                Device
+                            </th>
+                            <th>
+                                geometry_shader
+                            </th>
+                            <th>
+                                tesselation_shader
+                            </th>
+                                                <th>
+                                                    shader_int16
+                                                </th>
+                                                <th>
+                                                    sparse_binding
+                                                </th>
+                                                <th>
+                                                    texture_compressionetc2
+                                                </th>
+                                                <th>
+                                                    vertex_pipeline_stores_and_atomics
+                                                </th>
+
+                                            </tr>
+                                        </tfoot>
+                         <tbody>
+
+                        {% for gpu_all_data in gpu_data %}
+                        <tr>
+
+                            <td>
+                              <a href="/features/{{gpu_all_data.name}}">{{gpu_all_data.name}}</a>
+                          </td>
+                            <td>
+                             {{gpu_all_data.geometry_shader}}
+                          </td>
+                              <td>
+                             {{gpu_all_data.tesselation_shader}}
+                          </td>
+                            <td>
+                             {{gpu_all_data.shader_int16}}
+                          </td>
+                            <td>
+                             {{gpu_all_data.sparse_binding}}
+                          </td>
+<td>
+                             {{gpu_all_data.texture_compressionetc2}}
+                          </td>
+                            <td>
+                             {{gpu_all_data.vertex_pipeline_stores_and_atomics}}
+                          </td>
+
+                        </tr>
+
+
+
+                        {% endfor %}
+                      {% endif %}
+                    </tbody>
+                                    </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
